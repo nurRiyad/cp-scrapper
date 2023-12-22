@@ -1,6 +1,12 @@
-# Nitro Minimal Starter
+# CP Scrapper API Server
 
-Look at the [Nitro documentation](https://nitro.unjs.io/) to learn more.
+Get User Data from all popular competitive programming site using Nitro and Headless Browser
+
+### Currently Supported Browser
+
+- Atcoder
+  - https://cp-scrapper.vercel.app/api/atcoder
+
 
 ## Setup
 
