@@ -1,17 +1,19 @@
 import puppeteer from "puppeteer";
 
 export async function getAtcoderData() {
-  const browser = await puppeteer.launch({ headless: "new" });
-  const page = await browser.newPage();
 
-  await page.goto("https://atcoder.jp/users/nur_riyad");
+  let browser;
 
-  // await page.screenshot({ path: "test.png", fullPage: true });
-  // const html = await page.content();
-
-  function generateObj(element) {
-    return 10;
+  if(process.env.NODE_ENV === 'development'){
+    browser = await puppeteer.launch({ headless: "new" });
+  }else{
+    browser = await puppeteer.connect({
+      browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
+    })
   }
+  
+  const page = await browser.newPage();
+  await page.goto("https://atcoder.jp/users/nur_riyad");
 
   const title = await page.evaluate(() => {
     const allElements = document.querySelectorAll("#main-container .row .col-md-9 tr");
