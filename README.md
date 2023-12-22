@@ -2,7 +2,7 @@
 
 Get User Data from all popular competitive programming site using Nitro and Headless Browser
 
-### Currently Supported Browser
+## Currently Supported Online Judges
 
 - Atcoder
   - https://cp-scrapper.vercel.app/api/atcoder
