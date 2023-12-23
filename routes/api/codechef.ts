@@ -1,4 +1,4 @@
-import data from '../../data/cp.json'
-export default eventHandler(async() => {
-  return data.codechef || {}
-})
+import data from "../../data/cp.json";
+export default eventHandler(async () => {
+  return data.codechef || {};
+});

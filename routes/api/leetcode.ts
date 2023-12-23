@@ -1,4 +1,4 @@
-import data from '../../data/cp.json'
-export default eventHandler(async() => {
-  return data.leetCode || {}
-})
+import data from "../../data/cp.json";
+export default eventHandler(async () => {
+  return data.leetCode || {};
+});
