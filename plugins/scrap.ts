@@ -17,5 +17,5 @@ export default defineNitroPlugin((nitroApp) => {
   updateLatestData()
   setInterval(()=>{
     updateLatestData()
-  },5000)
+  },dayInMilliseconds)
 })
