@@ -7,6 +7,7 @@ const updateLatestData = async () => {
     const content = await scrapper();
     const fullPath = path.join(process.cwd(), "data", "cp.json");
     await fs.writeFile(fullPath, JSON.stringify(content));
+    console.log("Json Data Update");
   } catch (err) {
     console.log(err);
   }
