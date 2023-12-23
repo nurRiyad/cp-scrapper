@@ -2,11 +2,13 @@
 
 Get User Data from all popular competitive programming site using Nitro and Headless Browser
 
-## Currently Supported Online Judges
+## All Available API path
 
-- Atcoder
-  - https://cp-scrapper.vercel.app/api/atcoder
-
+- https://cp-scrapper.vercel.app/api/all
+- https://cp-scrapper.vercel.app/api/atcoder
+- https://cp-scrapper.vercel.app/api/leetcode
+- https://cp-scrapper.vercel.app/api/codeforces
+- https://cp-scrapper.vercel.app/api/codechef
 
 ## Setup
 
