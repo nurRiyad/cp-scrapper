@@ -1,13 +1,35 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { getAtcoderData } from './atcoder';
+import puppeteer from "puppeteer";
+import { getAtcoderData } from "./atcoder";
+import { getCodechefData } from "./codechef";
+import { getCodeforcesData } from "./codeforces";
+import { getLeetCodeData } from "./leetcode";
 
-export const updateLatestData = async () =>{
-  try {
-    const content = await getAtcoderData()
-    const fullPath = path.join(process.cwd(), 'data', 'cp.json')
-    await fs.writeFile(fullPath, JSON.stringify(content));
-  } catch (err) {
-    console.log(err);
+const initBrowser = async () => {
+  let browser;
+  if (process.env.NODE_ENV === "development") {
+    browser = await puppeteer.launch({ headless: "new" });
+  } else {
+    browser = await puppeteer.connect({
+      browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
+    });
   }
-}
+  return browser;
+};
+
+export const scrapper = async () => {
+  const browser = await initBrowser();
+
+  const codeforcesData = await getCodeforcesData();
+  const leetcodeData = await getLeetCodeData();
+  const atCoderData = await getAtcoderData(browser);
+  const codechefData = await getCodechefData(browser);
+
+  await browser.close();
+
+  return {
+    codeforces: codeforcesData,
+    atCoder: atCoderData,
+    leetCode: leetcodeData,
+    codechef: codechefData,
+  };
+};
